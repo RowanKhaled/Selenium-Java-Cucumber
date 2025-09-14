@@ -2,18 +2,17 @@ package StepDefinitions;
 
 import base.Hooks;
 import io.cucumber.java.en.*;
+import pages.DashboardPage;
 import pages.LoginPage;
-//import pages.DashboardPage;
 
 public class LoginSteps {
 
     LoginPage loginPage;
-//    DashboardPage dashboardPage;
+    DashboardPage dashboardPage;
 
     @Given("browser is open")
     public void openBrowser() {
         loginPage = new LoginPage(Hooks.driver);
-//        dashboardPage = new DashboardPage(Hooks.driver);
         loginPage.openLoginPage();
     }
 
@@ -30,6 +29,7 @@ public class LoginSteps {
 
     @Then("I should be redirected to the dashboard")
     public void dashboardOpens() {
-//        dashboardPage.clickAdminTab(); // just checking Admin tab is visible
+        dashboardPage = new DashboardPage(Hooks.driver);
+        dashboardPage.clickAdminTab();
     }
 }
